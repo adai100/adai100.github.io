@@ -774,3 +774,4 @@ CETV-2,http://zteres.sn.chinamobile.com:6060/yinhe/2/ch00000090990000001064?virt
 CETV-3,http://zteres.sn.chinamobile.com:6060/yinhe/2/ch00000090990000001309?virtualDomain=yinhe.live_hls.zte.com
 CETV-4,http://zteres.sn.chinamobile.com:6060/yinhe/2/ch00000090990000001308?virtualDomain=yinhe.live_hls.zte.com
 
+# https://jihulab.com/wekh/tvshow/-/raw/main/APTV.txt
