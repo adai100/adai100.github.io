@@ -6,7 +6,9 @@ import re
 m3us=''
 m3u='#EXTINF:-1 tvg-id="%s" tvg-name="%s"  group-title="%s",%s\n%s\n'
 
-page=re.sub('[\n]{1,}','\n',requests.get('https://jihulab.com/wekh/tvshow/-/raw/main/APTV.txt').text)
+# page=re.sub('[\n]{1,}','\n',requests.get('https://jihulab.com/wekh/tvshow/-/raw/main/APTV.txt').text)
+page=re.sub('[\n]{1,}','\n',requests.get('https://adai100.github.io/tmp.txt').text)
+
 titles=re.findall('(.*,#genre#)',page)
 txt=re.split(".*#genre#",page)
 for i,title in enumerate(titles):
