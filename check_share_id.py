@@ -14,6 +14,7 @@ import os
 alishares=[]
 # 检查alishare_list分享的有效性
 fname=os.path.join(os.path.dirname(__file__), 'alishare_list.txt')
+outputfname=os.path.join(os.path.dirname(__file__), 'alisharelist.txt')
 print(fname)
 with open(fname,'r') as f:
     temp=f.readlines()
@@ -40,5 +41,5 @@ for row in alishares:
             output_txt += f"{line[0]} {line[1]}\n"
         print(output_txt)
     sleep(1)
-with open("/dev/shm/alishare_list.txt", "w", encoding="utf-8") as f:
+with open(outputfname, "w", encoding="utf-8") as f:
     f.write(output_txt)
