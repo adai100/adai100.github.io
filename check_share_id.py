@@ -56,7 +56,7 @@ for row in alishares:
                     "share_pwd": "wumima",
                 }
             )
-            output_txt += f"{line[0]} {line[1]} {line[3]}\n"
+            output_txt += f"{line[0]} {line[1]} {line[2]}\n"
         elif len(line) == 2:
             output_json.append(
                 {
