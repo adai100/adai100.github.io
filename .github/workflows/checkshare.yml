@@ -26,7 +26,7 @@ jobs:
     - name: run script
       run: |
         # fetch new ip content and update readme file
-        sudo python checkshare.py
+        sudo python check_share_id.py
     - name: commit
       id: commit
       run: |
