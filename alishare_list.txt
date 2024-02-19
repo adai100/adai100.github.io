@@ -74,22 +74,4 @@ C-纪录片/综合  tzM8rVBaKd2  6357cc7b987c9e15d8a14098944c36f508950ff7
 C-纪录片/戏曲-合集  noWQuAz4TRJ  636a6d9ed092dfa0aa974d7eaeaa4618bfd0345d
 D-KTV歌库/歌库  DvzsbP1jQPh  615733d9a98a0ccb95bb42ae8e871b433bd2ad63
 D-KTV歌库/巨星演唱会合集  bRXQiG8G8PD  63bd2494397988780fce40d99a7ab233d62719fb
-E-教育/中小学生课程大全  sczzwasff8H  62f0aef8640cf40392e941988908c3b595e1ba58
-E-教育/黄保余小学作文和阅读训练营  PG8gZVUPafp  61380c8f9abbfee71d5b4c798ab160f24f7b3327
-E-教育/学而思1-9年级最全英语语法教学视频  KSP9kx7U1Mr  639176504a3f3d6a842c464b984e24ebb64d59ee
-E-教育/中小学生轻轻松松学地理—孩子从小爱上地理  nSsrD8zaRaA  639177e93c48a102c33942e4a3b98ea9de6d4dd0
-E-教育/新东方英语四级全程VIP班  9xfg4Np8Hfv  64c9e471dfe0c67ec716450486a50726090b9b97
-E-教育/小学初中高中-清华状元-学霸笔记  CgRgWQb1D9j  61682a1024e8b50765f64a599aa1124c9897c76f
-E-教育/同上一堂课-小学全  W9RxmfZejgk  60e8fc96967f43e7d75f428ebb357e738036a9ea
-E-教育/同上一堂课-初中-总复习  jn94oobCGuW  60e8fc9605c06018059a408faf65a24189d6550a
-E-教育/同上一堂课-高中-总复习  1H4sUXBDngq  60e8fc9682aec4a0fa9243d2b1be4f84ba888dca
-F-体育竞技/NBA总决赛1991-2021  Yq55GgwT1Vf  63e6227a58833ccd8b754c7685d27e8fc6389da4
-F-体育竞技/NBA总决赛2021-2022  2fDmG3SVWHP  63e7c00ccad8099ade4346c5aaf7e3b38e3417a5
-F-体育竞技/2022卡塔尔世界杯  qs6QGETdxny  63e7c00c7c9a89bfde68440999320f6f373117b0
-F-体育竞技/2022卡塔尔世界杯  qs6QGETdxny  63e7c00c7c9a89bfde68440999320f6f373117b09176504a3f3d6a842c464b984e24ebb64d59ee
-E-教育/中小学生轻轻松松学地理—孩子从小爱上地理  nSsrD8zaRaA  639177e93c48a102c33942e4a3b98ea9de6d4dd0
-E-教育/新东方英语四级全程VIP班  9xfg4Np8Hfv  64c9e471dfe0c67ec716450486a50726090b9b97
-E-教育/小学初中高中-清华状元-学霸笔记  CgRgWQb1D9j  61682a1024e8b50765f64a599aa1124c9897c76f
-E-教育/同上一堂课-小学全  W9RxmfZejgk  60e8fc96967f43e7d75f428ebb357e738036a9ea
-/E-教育/同上一堂课-初中-总复习  jn94oobCGuW  60e8fc9605c06018059a408faf65a24189d6550a
-/E-教育/同上一堂课-高中-总复习  1H4sUXBDngq  60e8fc9682aec4a0fa9243d2b1be4f84ba888dca
+
