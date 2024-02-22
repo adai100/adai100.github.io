@@ -46,28 +46,28 @@ for row in alishares:
                     "share_pwd": line[3],
                 }
             )
-            output_txt += f"{line[0]} {line[1]} {line[2]} {line[3]}\n"
+            output_txt += f"{line[0].strip("/").replace("/", "/")} {line[1]} {line[2]} {line[3]}\n"
         elif len(line) == 3:
             output_json.append(
                 {
-                    "mount_path": line[0].strip("/").replace("/", "_"),
+                    "mount_path": line[0].strip("/").replace("/", "/"),
                     "share_id": line[1],
                     "parent_file_id": line[2],
                     "share_pwd": "wumima",
                 }
             )
-            output_txt += f"{line[0]} {line[1]} {line[2]}\n"
+            output_txt += f"{line[0].strip("/").replace("/", "/")} {line[1]} {line[2]}\n"
         elif len(line) == 2:
             output_json.append(
                 {
-                    "mount_path": line[0].strip("/").replace("/", "_"),
+                    "mount_path": line[0].strip("/").replace("/", "/"),
                     "share_id": line[1],
                     "parent_file_id": "root",
                     "share_pwd": "wumima",
                 }
             )
-            output_txt += f"{line[0]} {line[1]}\n"
-        print(output_txt)
+            output_txt += f"{line[0].strip("/").replace("/", "/")} {line[1]}\n"
+        print(line[0].strip("/").replace("/", "|"))
     sleep(1)
 with open(outputtxtfname, "w", encoding="utf-8") as f:
     f.write(output_txt)
