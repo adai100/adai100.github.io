@@ -28,7 +28,7 @@ output_txt = ""
 output_json = []
 for row in alishares:
     line = row.split()
-    mount_path=line[0].strip("/").replace("/", "/"),
+    mount_path=line[0].strip("/")
     if line:
         url = (
             "https://api.aliyundrive.com/adrive/v3/share_link/get_share_by_anonymous?share_id="
