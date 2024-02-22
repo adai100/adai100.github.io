@@ -28,6 +28,7 @@ output_txt = ""
 output_json = []
 for row in alishares:
     line = row.split()
+    mount_path=line[0].strip("/").replace("/", "/"),
     if line:
         url = (
             "https://api.aliyundrive.com/adrive/v3/share_link/get_share_by_anonymous?share_id="
@@ -40,33 +41,33 @@ for row in alishares:
         if len(line) == 4:
             output_json.append(
                 {
-                    "mount_path": line[0].strip("/").replace("/", "/"),
+                    "mount_path": mount_path,
                     "share_id": line[1],
                     "parent_file_id": line[2],
                     "share_pwd": line[3],
                 }
             )
-            output_txt += f"{line[0].strip("/").replace("/", "/")} {line[1]} {line[2]} {line[3]}\n"
+            output_txt += f"{mount_path} {line[1]} {line[2]} {line[3]}\n"
         elif len(line) == 3:
             output_json.append(
                 {
-                    "mount_path": line[0].strip("/").replace("/", "/"),
+                    "mount_path": mount_path,
                     "share_id": line[1],
                     "parent_file_id": line[2],
                     "share_pwd": "wumima",
                 }
             )
-            output_txt += f"{line[0].strip("/").replace("/", "/")} {line[1]} {line[2]}\n"
+            output_txt += f"{mount_path} {line[1]} {line[2]}\n"
         elif len(line) == 2:
             output_json.append(
                 {
-                    "mount_path": line[0].strip("/").replace("/", "/"),
+                    "mount_path": mount_path,
                     "share_id": line[1],
                     "parent_file_id": "root",
                     "share_pwd": "wumima",
                 }
             )
-            output_txt += f"{line[0].strip("/").replace("/", "/")} {line[1]}\n"
+            output_txt += f"{mount_path} {line[1]}\n"
         print(line[0].strip("/").replace("/", "|"))
     sleep(1)
 with open(outputtxtfname, "w", encoding="utf-8") as f:
