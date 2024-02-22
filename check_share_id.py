@@ -71,7 +71,7 @@ for row in alishares:
             }
             output_json.append(item)
             output_txt += f"{mount_path} {line[1]}\n"
-        if not os.path.exists(os.path.join(tempdir,mount_path))
+        if not os.path.exists(os.path.join(tempdir,mount_path)):
             os.makedirs(os.path.join(tempdir,mount_path))
         with open(os.path.join(tempdir, mount_path, "index.json"), "w") as f:
             json.dump(item, f)
