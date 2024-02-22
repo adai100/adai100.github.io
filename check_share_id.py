@@ -40,7 +40,7 @@ for row in alishares:
         if len(line) == 4:
             output_json.append(
                 {
-                    "mount_path": line[0].strip("/").replace("/", "_"),
+                    "mount_path": line[0].strip("/").replace("/", "/"),
                     "share_id": line[1],
                     "parent_file_id": line[2],
                     "share_pwd": line[3],
