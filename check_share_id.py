@@ -3,7 +3,7 @@
 
 from time import sleep
 from sys import exit
-import yaml
+import shutil
 import requests
 import re, json
 import os
@@ -15,7 +15,7 @@ alishares = []
 # 检查alishare_list分享的有效性
 tempdir = os.path.join(os.path.dirname(__file__), "temp")
 # os.makedirs(tempdir)
-os.removedirs(tempdir)
+shutil.rmtree(tempdir)
 fname = os.path.join(os.path.dirname(__file__), "alishare_list.txt")
 outputtxtfname = os.path.join(os.path.dirname(__file__), "alisharelist.txt")
 outputjsonfname = os.path.join(os.path.dirname(__file__), "alisharelist.json")
