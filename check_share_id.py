@@ -15,6 +15,7 @@ alishares = []
 # 检查alishare_list分享的有效性
 tempdir = os.path.join(os.path.dirname(__file__), "temp")
 # os.makedirs(tempdir)
+os.removedirs(tempdir)
 fname = os.path.join(os.path.dirname(__file__), "alishare_list.txt")
 outputtxtfname = os.path.join(os.path.dirname(__file__), "alisharelist.txt")
 outputjsonfname = os.path.join(os.path.dirname(__file__), "alisharelist.json")
@@ -70,7 +71,8 @@ for row in alishares:
             }
             output_json.append(item)
             output_txt += f"{mount_path} {line[1]}\n"
-        os.makedirs(os.path.join(tempdir,mount_path))
+        if not os.path.exists(os.path.join(tempdir,mount_path))
+            os.makedirs(os.path.join(tempdir,mount_path))
         with open(os.path.join(tempdir, mount_path, "index.json"), "w") as f:
             json.dump(item, f)
         print(line[0].strip("/").replace("/", "|"))
