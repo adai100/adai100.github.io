@@ -17,6 +17,7 @@ def get_list_by_share(share_id, parent_file_id, share_pwd=""):
         headers={"Content-Type": "application/json"},
         json={"share_id": share_id, "share_pwd": share_pwd},
     ).json()["share_token"]
+    print(share_token)
     url = "https://api.aliyundrive.com/adrive/v2/file/list_by_share"
     headers = {"x-share-token": share_token}
     json1 = {
@@ -29,7 +30,9 @@ def get_list_by_share(share_id, parent_file_id, share_pwd=""):
         "order_by": "name",
         "order_direction": "ASC",
     }
-    return (requests.post(url, headers=headers, json=json1).json())["items"]
+    json2=requests.post(url, headers=headers, json=json1).json()
+    print(json2)
+    return json2["items"]
 
 
 alishares = []
