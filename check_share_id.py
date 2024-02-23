@@ -9,6 +9,7 @@ import re, json
 import os
 from retry import retry
 
+
 @retry(tries=3)
 def get_list_by_share(share_id, parent_file_id, share_pwd=""):
     if share_pwd == "wumima":
@@ -20,7 +21,12 @@ def get_list_by_share(share_id, parent_file_id, share_pwd=""):
     ).json()["share_token"]
     print(share_token)
     url = "https://api.aliyundrive.com/adrive/v2/file/list_by_share"
-    headers = {"x-share-token": share_token}
+    headers = {
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0",
+        "x-canary": "client=web,app=share,version=v2.3.1",
+        "x-device-id": "2nZcHZsF5AoBASQIgnCfKv7S",
+        "x-share-token": share_token,
+    }
     json1 = {
         "share_id": share_id,
         "parent_file_id": parent_file_id,
@@ -31,7 +37,7 @@ def get_list_by_share(share_id, parent_file_id, share_pwd=""):
         "order_by": "name",
         "order_direction": "ASC",
     }
-    json2=requests.post(url, headers=headers, json=json1).json()
+    json2 = requests.post(url, headers=headers, json=json1).json()
     print(json2)
     return json2["items"]
 
@@ -67,7 +73,8 @@ for row in alishares:
     else:
         continue
     req = requests.post(url, json={"share_id": line[1]}).json()
-    if "message" not in req and req['file_infos']:
+    print(req)
+    if "message" not in req and req["file_infos"]:
         if len(line) == 4:
             item = {
                 "mount_path": mount_path,
@@ -106,8 +113,8 @@ for row in alishares:
             json.dump(json1, f)
 
         print(line[0])
-    
-    sleep(5)
+
+    sleep(2)
 # with open(outputtxtfname, "w", encoding="utf-8") as f:
 #     f.write(output_txt)
 # with open(outputjsonfname, "w", encoding="utf-8") as f:
