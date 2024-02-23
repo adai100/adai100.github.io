@@ -10,13 +10,18 @@ import os
 from retry import retry
 
 
-@retry(tries=3)
+@retry(tries=5,delay=1,backoff=1,jitter=(5,7))
 def get_list_by_share(share_id, parent_file_id, share_pwd=""):
     if share_pwd == "wumima":
         share_pwd = ""
     share_token = requests.post(
         url="https://api.aliyundrive.com/v2/share_link/get_share_token",
-        headers={"Content-Type": "application/json"},
+        headers={
+            "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0",
+            "x-canary": "client=web,app=share,version=v2.3.1",
+            "x-device-id": "2nZcHZsF5AoBASQIgnCfKv7S",
+            "Content-Type": "application/json",
+        },
         json={"share_id": share_id, "share_pwd": share_pwd},
     ).json()["share_token"]
     print(share_token)
