@@ -7,8 +7,9 @@ import shutil
 import requests
 import re, json
 import os
+from retry import retry
 
-
+@retry(tries=3)
 def get_list_by_share(share_id, parent_file_id, share_pwd=""):
     if share_pwd == "wumima":
         share_pwd = ""
