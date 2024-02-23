@@ -106,7 +106,7 @@ for row in alishares:
 
         print(line[0])
     
-    sleep(1)
+    sleep(2)
 # with open(outputtxtfname, "w", encoding="utf-8") as f:
 #     f.write(output_txt)
 # with open(outputjsonfname, "w", encoding="utf-8") as f:
