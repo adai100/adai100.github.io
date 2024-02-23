@@ -65,7 +65,7 @@ for row in alishares:
     else:
         continue
     req = requests.post(url, json={"share_id": line[1]}).json()
-    if "message" not in req:
+    if "message" not in req and req['file_infos']:
         if len(line) == 4:
             item = {
                 "mount_path": mount_path,
@@ -96,6 +96,7 @@ for row in alishares:
             output_txt += f"{mount_path} {line[1]}\n"
         if not os.path.exists(os.path.join(tempdir, mount_path)):
             os.makedirs(os.path.join(tempdir, mount_path))
+        print(item)
         json1 = get_list_by_share(
             item["share_id"], item["parent_file_id"], item["share_pwd"]
         )
@@ -103,6 +104,7 @@ for row in alishares:
             json.dump(json1, f)
 
         print(line[0])
+    
     sleep(1)
 # with open(outputtxtfname, "w", encoding="utf-8") as f:
 #     f.write(output_txt)
