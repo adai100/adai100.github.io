@@ -38,7 +38,8 @@ def get_list_by_share(share_id, parent_file_id, share_pwd=""):
 alishares = []
 # 检查alishare_list分享的有效性
 tempdir = os.path.join(os.path.dirname(__file__), "temp")
-shutil.rmtree(tempdir)
+if os.path.exists(tempdir):
+    shutil.rmtree(tempdir)
 fname = os.path.join(os.path.dirname(__file__), "alishare_list.txt")
 outputtxtfname = os.path.join(os.path.dirname(__file__), "alisharelist.txt")
 outputjsonfname = os.path.join(os.path.dirname(__file__), "alisharelist.json")
