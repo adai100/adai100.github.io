@@ -29,7 +29,7 @@ jobs:
       run: |
         # fetch new ip content and update readme file
         sudo python check_share_id.py
-        tar -czvf data.tar.gz temp/
+        tar -czvf data.tar.gz plugin.video.aliyunshare/
     - name: commit
       id: commit
       run: |
