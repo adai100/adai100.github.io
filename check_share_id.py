@@ -49,7 +49,7 @@ def get_list_by_share(share_id, parent_file_id, share_pwd=""):
 
 alishares = []
 # 检查alishare_list分享的有效性
-tempdir = os.path.join(os.path.dirname(__file__), "temp")
+tempdir = os.path.join(os.path.dirname(__file__), "plugin.video.aliyunshare")
 if os.path.exists(tempdir):
     shutil.rmtree(tempdir)
 fname = os.path.join(os.path.dirname(__file__), "alishare_list.txt")
