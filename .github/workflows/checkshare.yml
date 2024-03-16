@@ -28,15 +28,16 @@ jobs:
     - name: run script
       run: |
         # fetch new ip content and update readme file
-        sudo python check_share_id.py
-        tar -czvf data.tar.gz plugin.video.aliyunshare/
+        # sudo python check_share_id.py
+        sudo python alishare.py
+        # tar -czvf data.tar.gz plugin.video.aliyunshare/
     - name: commit
       id: commit
       run: |
         git config --global user.email 2486251172@qq.com
         git config --global user.name hbyhzx
         git add .
-        git commit -m "更新阿里分享链接（剔除失效）"
+        git commit -m "更新阿里分享链接"
                
       continue-on-error: true
     - name: Check on failures
