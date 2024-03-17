@@ -74,6 +74,31 @@ for i in json.loads(req):
         )
         sleep(1)
 
+alishares = []
+fname = os.path.join(os.path.dirname(__file__), "alishare_list.txt")
+with open(fname, "r") as f:
+    temp = f.readlines()
+for tmp in temp:
+    if tmp.strip():
+        alishares.append(tmp.strip())
 
+
+for row in alishares:
+    line = row.split()
+    mount_path = line[0].strip("/")
+    if line:
+        url = (
+            "https://api.aliyundrive.com/adrive/v3/share_link/get_share_by_anonymous?share_id="
+            + line[1]
+        )
+    else:
+        continue
+    req = requests.post(url, json={"share_id": line[1]}).json()
+    print(req)
+    if "message" not in req and req["file_infos"]:
+        share_token = get_share_token(line[1])
+        items[line[0].strip("/").replace('/','_')] = get_list_by_share(line[1], line[2], share_token)
+    sleep(1)
+    
 with open(outputjsonfname, "w", encoding="utf-8") as f:
     json.dump(items, f)
