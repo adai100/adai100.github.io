@@ -54,7 +54,19 @@ def get_list_by_share(share_id, parent_file_id, share_token, share_pwd=""):
 
 req = requests.post(
     url="https://v1.api.production.link3.cc:5678/api/no_auth/user",
-    headers={"Content-Type": "application/json"},
+    headers={
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "zh,zh-CN;q=0.8,en;q=0.5,en-US;q=0.3",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Content-Type": "application/json",
+        "Origin": "https://link3.cc",
+        "Connection": "keep-alive",
+        "Referer": "https://link3.cc/",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "same-site",
+    },
     json={"username": "alipan"},
 ).json()["data"]["links"]
 for i in json.loads(req):
@@ -97,8 +109,10 @@ for row in alishares:
     print(req)
     if "message" not in req and req["file_infos"]:
         share_token = get_share_token(line[1])
-        items[line[0].strip("/").replace('/','_')] = get_list_by_share(line[1], line[2], share_token)
+        items[line[0].strip("/").replace("/", "_")] = get_list_by_share(
+            line[1], line[2], share_token
+        )
     sleep(1)
-    
+
 with open(outputjsonfname, "w", encoding="utf-8") as f:
     json.dump(items, f)
