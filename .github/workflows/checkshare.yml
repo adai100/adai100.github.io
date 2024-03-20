@@ -37,7 +37,7 @@ jobs:
         git config --global user.email 2486251172@qq.com
         git config --global user.name hbyhzx
         git add .
-        git commit -m "更新阿里分享链接"
+        git commit -m "更新阿里分享链接 "
                
       continue-on-error: true
     - name: Check on failures
