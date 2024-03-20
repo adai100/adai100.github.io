@@ -52,39 +52,39 @@ def get_list_by_share(share_id, parent_file_id, share_token, share_pwd=""):
     return json2["items"]
 
 
-req = requests.post(
-    url="https://v1.api.production.link3.cc:5678/api/no_auth/user",
-    headers={
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Language": "zh,zh-CN;q=0.8,en;q=0.5,en-US;q=0.3",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Content-Type": "application/json",
-        "Origin": "https://link3.cc",
-        "Connection": "keep-alive",
-        "Referer": "https://link3.cc/",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-site",
-    },
-    json={"username": "alipan"},
-).json()["data"]["links"]
-for i in json.loads(req):
-    if (
-        "icon_url" in i["typeValue"]
-        and i["typeValue"]["icon_url"]
-        == "user_create_images/module_urls/img.alicdn.com"
-    ):
+# req = requests.post(
+#     url="https://v1.api.production.link3.cc:5678/api/no_auth/user",
+#     headers={
+#         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
+#         "Accept": "application/json, text/plain, */*",
+#         "Accept-Language": "zh,zh-CN;q=0.8,en;q=0.5,en-US;q=0.3",
+#         "Accept-Encoding": "gzip, deflate, br",
+#         "Content-Type": "application/json",
+#         "Origin": "https://link3.cc",
+#         "Connection": "keep-alive",
+#         "Referer": "https://link3.cc/",
+#         "Sec-Fetch-Dest": "empty",
+#         "Sec-Fetch-Mode": "cors",
+#         "Sec-Fetch-Site": "same-site",
+#     },
+#     json={"username": "alipan"},
+# ).json()["data"]["links"]
+# for i in json.loads(req):
+#     if (
+#         "icon_url" in i["typeValue"]
+#         and i["typeValue"]["icon_url"]
+#         == "user_create_images/module_urls/img.alicdn.com"
+#     ):
 
-        print(i["typeValue"]["title"])
-        share_id = i["typeValue"]["nav_url"].split("/")[4]
-        share_token = get_share_token(share_id)
-        parent_file_id = get_list_by_share(share_id, "root", share_token)[0]["file_id"]
+#         print(i["typeValue"]["title"])
+#         share_id = i["typeValue"]["nav_url"].split("/")[4]
+#         share_token = get_share_token(share_id)
+#         parent_file_id = get_list_by_share(share_id, "root", share_token)[0]["file_id"]
 
-        items[i["typeValue"]["title"]] = get_list_by_share(
-            share_id, parent_file_id, share_token
-        )
-        sleep(1)
+#         items[i["typeValue"]["title"]] = get_list_by_share(
+#             share_id, parent_file_id, share_token
+#         )
+#         sleep(1)
 
 alishares = []
 fname = os.path.join(os.path.dirname(__file__), "alishare_list.txt")
