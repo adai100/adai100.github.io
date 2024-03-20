@@ -29,7 +29,7 @@ jobs:
       run: |
         # fetch new ip content and update readme file
         # sudo python check_share_id.py
-        sudo python alishare.py
+        # sudo python alishare.py
         # tar -czvf data.tar.gz plugin.video.aliyunshare/
     - name: commit
       id: commit
@@ -52,7 +52,7 @@ jobs:
     - name: Mirror the Github organization repos to Gitee.
       uses: Yikun/hub-mirror-action@master
       with:
-        src: github/adi100
+        src: github/adai100
         dst: gitee/hbyhzx
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         dst_token: ${{ secrets.GITEE_TOKEN }}
