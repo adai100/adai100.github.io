@@ -48,8 +48,19 @@ def get_list_by_share(share_id, parent_file_id, share_token, share_pwd=""):
         "order_direction": "ASC",
     }
     json2 = requests.post(url, headers=headers, json=json1).json()
-    # print(json2)
-    return json2["items"]
+    ret=[]
+    for item in json2['items']:
+        ret.append(item)
+
+    while json2["next_marker"] != "":
+        sleep(1)
+        json1["marker"] = json2["next_marker"]
+        json2 = requests.post(url, headers=headers, json=json1).json()
+        if json2["items"]:
+            for item in json2['items']:
+                ret.append(item)
+
+    return ret
 
 
 # req = requests.post(

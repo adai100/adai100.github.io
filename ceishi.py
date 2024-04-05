@@ -27,6 +27,7 @@ def get_share_token(share_id, share_pwd=""):
 
 
 def get_list_by_share(share_id, parent_file_id, share_token, share_pwd=""):
+    ret = []
     if share_pwd == "wumima":
         share_pwd = ""
 
@@ -48,41 +49,63 @@ def get_list_by_share(share_id, parent_file_id, share_token, share_pwd=""):
         "order_direction": "ASC",
     }
     json2 = requests.post(url, headers=headers, json=json1).json()
-    # print(json2)
-    return json2["items"]
+    for i in json2['items']:
+        ret.append(i)
 
-
-req = requests.post(
-    url="https://v1.api.production.link3.cc:5678/api/no_auth/user",
-    headers={
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Language": "zh,zh-CN;q=0.8,en;q=0.5,en-US;q=0.3",
-        "Accept-Encoding": "gzip, deflate, br",
-        "Content-Type": "application/json",
-        "Origin": "https://link3.cc",
-        "Connection": "keep-alive",
-        "Referer": "https://link3.cc/",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-site",
-    },
-    json={"username": "alipan"},
-).json()["data"]["links"]
-for i in json.loads(req):
-    if (
-        "icon_url" in i["typeValue"]
-        and i["typeValue"]["icon_url"]
-        == "user_create_images/module_urls/img.alicdn.com"
-    ):
-
-        share_id = i["typeValue"]["nav_url"].split("/")[4]
-        share_token = get_share_token(share_id)
-        parent_file_id = get_list_by_share(share_id, "root", share_token)[0]["file_id"]
-        print(i["typeValue"]["title"], " ", share_id, " ", parent_file_id)
+    while json2["next_marker"] != "":
         sleep(1)
-    else:
-        continue
+        json1["marker"] = json2["next_marker"]
+        json2 = requests.post(url, headers=headers, json=json1).json()
+        if json2["items"]:
+            for i in json2['items']:
+                ret.append(i)
+
+    return ret
+# share_token = get_share_token("3eKuM6Nm8ac")
+# j = get_list_by_share(
+#     "3eKuM6Nm8ac", "65a25a761193d0222c96494f9cceacd10591628f", share_token
+# )
+# print(j)
+z = {}
+share_token = get_share_token("3eKuM6Nm8ac")
+j = get_list_by_share(
+    "3eKuM6Nm8ac", "65a25a761193d0222c96494f9cceacd10591628f", share_token
+)
+z["阿三劳动法就"] = j
+with open("/dev/shm/t.json", "w", encoding="utf-8") as f:
+    json.dump(z, f)
+
+# req = requests.post(
+#     url="https://v1.api.production.link3.cc:5678/api/no_auth/user",
+#     headers={
+#         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/123.0",
+#         "Accept": "application/json, text/plain, */*",
+#         "Accept-Language": "zh,zh-CN;q=0.8,en;q=0.5,en-US;q=0.3",
+#         "Accept-Encoding": "gzip, deflate, br",
+#         "Content-Type": "application/json",
+#         "Origin": "https://link3.cc",
+#         "Connection": "keep-alive",
+#         "Referer": "https://link3.cc/",
+#         "Sec-Fetch-Dest": "empty",
+#         "Sec-Fetch-Mode": "cors",
+#         "Sec-Fetch-Site": "same-site",
+#     },
+#     json={"username": "alipan"},
+# ).json()["data"]["links"]
+# for i in json.loads(req):
+#     if (
+#         "icon_url" in i["typeValue"]
+#         and i["typeValue"]["icon_url"]
+#         == "user_create_images/module_urls/img.alicdn.com"
+#     ):
+
+#         share_id = i["typeValue"]["nav_url"].split("/")[4]
+#         share_token = get_share_token(share_id)
+#         parent_file_id = get_list_by_share(share_id, "root", share_token)[0]["file_id"]
+#         print(i["typeValue"]["title"], " ", share_id, " ", parent_file_id)
+#         sleep(1)
+#     else:
+#         continue
 
 
 # alishares = []
