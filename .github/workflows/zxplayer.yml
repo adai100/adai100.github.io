@@ -1,0 +1,55 @@
+#修改TNAME: K2P 中的K2P为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
+name: zxplayer
+
+on: 
+  release:
+    types: [published]
+  push:
+    tags:
+    - 'v*'
+  #  branches: 
+  #    - master
+#  schedule:
+#    - cron: 0 8 * * 5
+  watch:
+    types: [started]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+        with:
+          submodules: "recursive"
+
+      - name: Install Node.js 18.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.18.0
+          cache: 'yarn'
+      - name: Clone source code
+        run: |
+          pwd
+          git clone --depth=1 https://github.com/hjdhnx/ZyPlayer.git
+          cd ZyPlayer
+          yarn add electron-vite -D
+          yarn build:linux
+          ls
+      - name : Upload packages
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: zyplayer-linux-appimage
+          path: ./dist
+   
+      - name: Upload Firmware to Github Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./dist/*.AppImage*
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
