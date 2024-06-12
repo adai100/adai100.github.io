@@ -28,7 +28,7 @@ jobs:
       - name: Clone source code
         run: |
           pwd
-          git clone --depth=1 https://github.com/hjdhnx/ZyPlayer.git ./
+          git clone --depth=1 https://github.com/hjdhnx/ZyPlayer.git /home/runner/work/adai100.github.io/adai100.github.io/
           cd ZyPlayer
           yarn add electron-vite -D
           yarn build:linux
