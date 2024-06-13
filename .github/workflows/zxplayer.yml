@@ -43,6 +43,7 @@ jobs:
       - name: Clone source code
         run: |
           pwd
+          git clone --depth=1 https://github.com/hjdhnx/ZyPlayer.git 
           ls
           yarn add electron-vite -D
           yarn build:linux
