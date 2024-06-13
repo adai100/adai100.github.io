@@ -20,6 +20,17 @@ jobs:
     runs-on: ubuntu-20.04
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
+      - name: Clone source code
+        run: |
+          pwd
+          git clone --depth=1 https://github.com/hjdhnx/ZyPlayer.git 
+          cd ZyPlayer
+          # yarn add electron-vite -D
+          # yarn build:linux
+          # cp ./dist/*.AppImage ../
+          # cd ../
+          # rm -rf ZyPlayer/
+          pwd
       - name: Check out Git repository
         uses: actions/checkout@v4
         with:
@@ -31,9 +42,7 @@ jobs:
           cache: 'yarn'
       - name: Clone source code
         run: |
-          pwd
-          git clone --depth=1 https://github.com/hjdhnx/ZyPlayer.git 
-          cd ZyPlayer
+
           yarn add electron-vite -D
           yarn build:linux
           cp ./dist/*.AppImage ../
