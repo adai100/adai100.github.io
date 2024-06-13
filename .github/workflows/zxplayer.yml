@@ -30,6 +30,7 @@ jobs:
       - name: Clone source code
         run: |
           git clone --depth=1 https://github.com/hjdhnx/ZyPlayer.git 
+          cd ZyPlayer
       - name: Install Node.js 18.x
         uses: actions/setup-node@v4
         with:
