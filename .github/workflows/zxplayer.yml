@@ -42,7 +42,7 @@ jobs:
           cache: 'yarn'
       - name: Clone source code
         run: |
-
+          cd ZyPlayer
           yarn add electron-vite -D
           yarn build:linux
           cp ./dist/*.AppImage ../
