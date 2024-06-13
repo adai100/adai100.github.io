@@ -24,6 +24,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: "recursive"
+      - name: Install Node.js 18.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.18.0
+          cache: 'yarn'
       - name: Clone source code
         run: |
           pwd
@@ -31,12 +36,16 @@ jobs:
           cd ZyPlayer
           yarn add electron-vite -D
           yarn build:linux
-          ls
-      # - name: Install Node.js 18.x
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 18.18.0
-      #     cache: 'yarn'
+          cp ./dist/*.AppImage ../
+          cd ../
+          rm -rf ZyPlayer/
+      - name: commit
+        id: commit
+        run: |
+          git config --global user.email 2486251172@qq.com
+          git config --global user.name hbyhzx
+          git add .
+          git commit -m "APP"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
