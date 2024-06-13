@@ -56,3 +56,5 @@ jobs:
         dst: gitee/hbyhzx
         dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
         dst_token: ${{ secrets.GITEE_TOKEN }}
+        force_update: true  # 启用后，强制同步，即强制覆盖目的端仓库
+        static_list: "adai100.github.io" 
