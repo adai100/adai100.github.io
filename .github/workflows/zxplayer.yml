@@ -20,8 +20,6 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     if: github.event.repository.owner.id == github.event.sender.id
-    environment:
-      GH_TOKEN: ${{ secrets.GITEE_TOKEN }}
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v4
@@ -29,6 +27,7 @@ jobs:
           submodules: "recursive"
       - name: Clone source code
         run: |
+          echo ${{ secrets.GITEE_TOKEN }} > "$GH_TOKEN"
           pwd
           git clone --depth=1 https://github.com/hjdhnx/ZyPlayer.git 
           cd ZyPlayer
