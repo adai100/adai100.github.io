@@ -16,13 +16,12 @@ on:
     types: [started]
 
 jobs:
-  deploy:
-    environment:
-      GH_TOKEN: ${{ secrets.GITEE_TOKEN }}
+
   build:
     runs-on: ubuntu-20.04
     if: github.event.repository.owner.id == github.event.sender.id
-
+    environment:
+      GH_TOKEN: ${{ secrets.GITEE_TOKEN }}
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v4
